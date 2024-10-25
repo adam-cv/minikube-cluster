@@ -9,12 +9,12 @@ resource "minikube_cluster" "docker" {
   memory       = "8192mb"
   addons = [
     "dashboard",
-    "default-storageclass",
-    "ingress",
-    "storage-provisioner",
+    "storage-provisioner-gluster",
+    "ambassador",
     "registry",
     "metrics-server",
-  #  "ingress-dns"
+#    "istio-provisioner",
+#    "istio"
   ]
 }
 

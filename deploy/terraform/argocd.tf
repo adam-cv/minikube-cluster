@@ -11,6 +11,7 @@ resource "helm_release" "argocd-server" {
 
   depends_on = [minikube_cluster.docker]
   wait = true
+  wait_for_jobs = true
 }
 
 data "kubectl_filename_list" "manifests" {
