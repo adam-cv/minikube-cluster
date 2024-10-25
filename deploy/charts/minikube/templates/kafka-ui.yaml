@@ -24,5 +24,8 @@ spec:
     path: kafka-ui/kafka-ui
     targetRevision: 0.7.6
   syncPolicy:
+    automated:
+      prune: true
     syncOptions:
+      - selfHeal=true
       - ServerSideApply=true
