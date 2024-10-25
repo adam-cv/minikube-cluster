@@ -10,7 +10,6 @@ resource "minikube_cluster" "docker" {
   addons = [
     "dashboard",
     "storage-provisioner-gluster",
-    "ambassador",
     "registry",
     "metrics-server",
 #    "istio-provisioner",
