@@ -1,13 +1,32 @@
 apiVersion: kafka.strimzi.io/v1beta2
 kind: KafkaNodePool
 metadata:
-  name: dual-role
+  name: controller
   labels:
     strimzi.io/cluster: kafka-cluster
 spec:
   replicas: 1
   roles:
     - controller
+  storage:
+    type: jbod
+    volumes:
+      - id: 0
+        type: persistent-claim
+        size: 1Gi
+        kraftMetadata: shared
+        deleteClaim: false
+---
+
+apiVersion: kafka.strimzi.io/v1beta2
+kind: KafkaNodePool
+metadata:
+  name: broker
+  labels:
+    strimzi.io/cluster: kafka-cluster
+spec:
+  replicas: 1
+  roles:
     - broker
   storage:
     type: jbod
@@ -15,9 +34,10 @@ spec:
       - id: 0
         type: persistent-claim
         size: 1Gi
-        class: standard
-        deleteClaim: false
+        # Indicates that this directory will be used to store Kraft metadata log
         kraftMetadata: shared
+        deleteClaim: false
+
 ---
 
 apiVersion: kafka.strimzi.io/v1beta2
@@ -31,7 +51,6 @@ spec:
   kafka:
     version: 3.8.0
     metadataVersion: 3.8-IV0
-    replicas: 1
     listeners:
       - name: plain
         port: 9092
