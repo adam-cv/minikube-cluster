@@ -17,8 +17,7 @@ spec:
     repoURL: quay.io/strimzi-helm
     targetRevision: 0.43.0
   syncPolicy:
-    automated:
-      prune: true
     syncOptions:
+      - ApplyOutOfSyncOnly=true
       - ServerSideApply=true
       - CreateNamespace=true 

@@ -21,4 +21,5 @@ spec:
     targetRevision: HEAD
   syncPolicy:
     syncOptions:
+      - ApplyOutOfSyncOnly=true
       - ServerSideApply=true
