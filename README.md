@@ -106,3 +106,27 @@ kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.pas
 | ArgoCD  | [Launch](http://localhost:8080/applications)     |
 | Kafka-UI | [Launch](http://localhost:8001/)    |
 | Kafka-Dashboard    | [Launch](http://localhost:8002/) |
+
+## Setting up argocd
+To use argoo-cd terraform is expecitng a repo-secret.yaml exists in the deploy/terraform/manifests/repo-secret.yaml.
+
+To generate the key follow the instructions in [Link](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent)
+
+```yaml
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: argoproj-ssh-creds
+  namespace: argocd
+  labels:
+    argocd.argoproj.io/secret-type: repo-creds
+stringData:
+  url: git@github.com:argoproj-labs
+  type: helm
+  sshPrivateKey: |
+    -----BEGIN OPENSSH PRIVATE KEY-----
+    ...
+    -----END OPENSSH PRIVATE KEY-----
+
+```

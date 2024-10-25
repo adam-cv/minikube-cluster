@@ -23,7 +23,7 @@ go.work.sum
 bin/*
 *.tfstate
 */**/.terraform/*
-
+deploy/terraform/.last_run/
 *.DS_Store
 *.tfstate.backup
 *.terraform.lock.hcl
