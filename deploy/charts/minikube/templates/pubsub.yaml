@@ -1,0 +1,25 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  labels:
+    domain: etl
+    environment: production
+    team: demo
+  name: pubsub
+  namespace: argocd
+spec:
+  destination:
+    namespace: pubsub
+    server: 'https://kubernetes.default.svc'
+  project: default
+  source:
+    helm:
+      valueFiles:
+        - values.yaml
+    repoURL: git@github.com:adam-cv/minikube-cluster
+    path: deploy/charts/pubsub
+    targetRevision: HEAD
+  syncPolicy:
+    syncOptions:
+      - ServerSideApply=true
+      - CreateNamespace=true   

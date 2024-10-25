@@ -1,0 +1,32 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  labels:
+    domain: etl
+    environment: production
+    team: demo
+  name: kafka-ui
+  namespace: argocd
+spec:
+  destination:
+    namespace: kafka
+    server: 'https://kubernetes.default.svc'
+  project: default
+  source:
+    helm:
+      values: |
+        envs:
+          config:
+            - KAFKA_CLUSTERS_0_NAME=kafka-cluster
+            - KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS=kafka-cluster-kafka-bootstrap.kafka.svc.cluster.local:9092
+            - KAFKA_CLUSTERS_0_ZOOKEEPER=kafka-cluster-zookeeper-client.kafka.svc.cluster.local:2181
+        image:
+          registry: docker.io
+          repository: provectuslabs/kafka-ui
+          pullPolicy: IfNotPresent
+    repoURL: git@github.com:provectus/kafka-ui-charts
+    path: charts/kafka-ui
+    targetRevision: 0.7.6
+  syncPolicy:
+    syncOptions:
+      - ServerSideApply=true

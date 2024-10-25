@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  labels:
+    argocd.argoproj.io/secret-type: repository
+  name: quay.io
+  namespace: argocd
+stringData:
+  url:  quay.io/strimzi-helm
+  name: strimzi-helm
+  type: helm
+  enableOCI: "true"
+---

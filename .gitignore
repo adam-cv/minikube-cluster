@@ -20,6 +20,12 @@
 # Go workspace file
 go.work
 go.work.sum
+bin/*
+*.tfstate
+*/**/.terraform/*
 
-# env file
-.env
+*.DS_Store
+*.tfstate.backup
+*.terraform.lock.hcl
+repo-secret.yaml
+.terraform.tfstate.lock.info

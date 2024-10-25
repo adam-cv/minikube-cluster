@@ -1,0 +1,24 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  labels:
+    domain: etl
+    environment: production
+    team: etl
+  name: kafka-operator
+  namespace: argocd
+spec:
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: kafka
+  project: default
+  source:
+    chart: strimzi-kafka-operator
+    repoURL: quay.io/strimzi-helm
+    targetRevision: 0.43.0
+  syncPolicy:
+    automated:
+      prune: true
+    syncOptions:
+      - ServerSideApply=true
+      - CreateNamespace=true 
