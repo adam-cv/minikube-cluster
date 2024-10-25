@@ -18,6 +18,5 @@ spec:
     targetRevision: 0.43.0
   syncPolicy:
     syncOptions:
-      - ApplyOutOfSyncOnly=true
       - ServerSideApply=true
       - CreateNamespace=true 
