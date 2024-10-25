@@ -10,6 +10,7 @@ resource "helm_release" "argocd-server" {
   values = [file("values/argocd.yaml")]
 
   depends_on = [minikube_cluster.docker]
+  wait = true
 }
 
 data "kubectl_filename_list" "manifests" {

@@ -8,12 +8,19 @@ This project shows a simple example of running a minikube cluster localy using t
 ## Warning
 This is an example project and not production ready. Certain configurations like argocd is running as TLS disabled.
 
-## Dependencies
+## Requirements
 
-* Uses docker for the VM - could use podman in the future.
-* Need to have minikube and kubectl installed.
-* Assumes minikube is running ```minikube start```
-* Assumes this alias is setup ```kubectl='minikube -p minikube kubectl --'```
+| Tool    | Version |  
+| -------- | -------- |  
+| [Terraform](https://github.com/hashicorp/terraform)  |  [v1.5.7 ](https://formulae.brew.sh/formula/terraform)     |
+| [Minikube](https://minikube.sigs.k8s.io/docs/)|  [v1.34.0](https://minikube.sigs.k8s.io/docs/start/?arch=%2Fmacos%2Farm64%2Fstable%2Fbinary+download)    |
+|[Docker Desktop](https://www.docker.com/products/docker-desktop/)|[v4.34.3](https://www.docker.com/products/docker-desktop/) |
+| [Podman Desktop](https://podman-desktop.io/)|  [v1.13.2](https://formulae.brew.sh/cask/podman-desktop)|
+
+### Assunptions
+* Needs to have Terraform, Minikube and either docker or podman installed.
+* Assumes minikube is process running ```minikube start```
+* Assumes this kubectl alias is setup ```kubectl='minikube -p minikube kubectl --'```
 * Assumes docker desktop is running.
 
 ## To Run
