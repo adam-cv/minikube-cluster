@@ -5,8 +5,8 @@ provider "minikube" {
 resource "minikube_cluster" "docker" {
   driver       = "docker"
   cluster_name = "minikube"
-  nodes        = 8
-  memory       = "16384mb"
+  nodes        = 4
+  memory       = "8192mb"
   addons = [
     "dashboard",
     "default-storageclass",
