@@ -20,12 +20,8 @@ spec:
             - KAFKA_CLUSTERS_0_NAME=kafka-cluster
             - KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS=kafka-cluster-kafka-bootstrap.kafka.svc.cluster.local:9092
             - KAFKA_CLUSTERS_0_ZOOKEEPER=kafka-cluster-zookeeper-client.kafka.svc.cluster.local:2181
-        image:
-          registry: docker.io
-          repository: provectuslabs/kafka-ui
-          pullPolicy: IfNotPresent
-    repoURL: git@github.com:provectus/kafka-ui-charts
-    path: charts/kafka-ui
+    repoURL: https://provectus.github.io/kafka-ui-charts/
+    path: kafka-ui/kafka-ui
     targetRevision: 0.7.6
   syncPolicy:
     syncOptions:
