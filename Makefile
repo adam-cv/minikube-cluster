@@ -19,8 +19,8 @@ terraform-destroy:
 	cd deploy/terraform && terraform destroy -auto-approve && rm ./deploy/terraform/terraform.tfstate && rm ./deploy/terraform/terraform.tfstate.backup && rm ./deploy/terraform/.terraform.lock.hcl
 
 run:
-	minikube start --cpus 4 --memory 8192 --kubernetes-version v1.30.5 && \
-	minikube delete
+	# minikube start --cpus 4 --memory 8192 --kubernetes-version v1.30.5 && \
+	# minikube delete
 
 clean:
 	minikube delete && \
