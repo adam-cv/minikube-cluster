@@ -1,3 +1,8 @@
+provider "kubernetes" {
+  config_path = "~/.kube/config"
+  config_context = "minikube"
+}
+
 resource "helm_release" "argocd-server" {
   name = "argocd"
 
@@ -5,13 +10,9 @@ resource "helm_release" "argocd-server" {
   chart            = "argo-cd"
   namespace        = "argocd"
   create_namespace = true
-  version          = "7.6.12"
+  version          = "7.7.7"
 
   values = [file("values/argocd.yaml")]
-
-  depends_on = [minikube_cluster.docker]
-  wait = true
-  wait_for_jobs = true
 }
 
 data "kubectl_filename_list" "manifests" {
